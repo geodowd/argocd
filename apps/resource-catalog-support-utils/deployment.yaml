@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-catalog-support-utils
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource-catalog-support-utils
+  template:
+    metadata:
+      labels:
+        app: resource-catalog-support-utils
+    spec:
+      containers:
+        - name: resource-catalog-support-utils
+          image: public.ecr.aws/eodh/resource-catalog-support-utils:main
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

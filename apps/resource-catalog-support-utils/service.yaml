@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resource-catalog-support-utils
+spec:
+  type: LoadBalancer
+  selector:
+    app: resource-catalog-support-utils
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: http
