@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: resource-catalog-support-utils
-          image: public.ecr.aws/eodh/resource-catalog-support-utils:main
+          image: public.ecr.aws/eodh/resource-catalog-support-utils:latest
           imagePullPolicy: Always
           ports:
             - name: http
