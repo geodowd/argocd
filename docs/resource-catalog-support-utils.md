@@ -72,6 +72,28 @@ Traffic flow is generally:
 
 `Ingress -> Service -> Pod container (port 8000)`
 
+## Register the App in Argo CD
+
+If the app is not yet registered in Argo CD, create it with:
+
+```bash
+argocd app create argocd/resource-catalog-support-utils \
+  --repo https://github.com/geodowd/argocd.git \
+  --path apps/resource-catalog-support-utils \
+  --revision main \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace resource-catalog-support-utils \
+  --project default \
+  --directory-recurse
+```
+
+Then verify and sync:
+
+```bash
+argocd app get argocd/resource-catalog-support-utils
+argocd app sync argocd/resource-catalog-support-utils
+```
+
 ## Important Note About Host Placeholder
 
 `${[.vars.platform.domain]}` is not standard Kustomize variable syntax by itself.
