@@ -1,6 +1,5 @@
 global:
   clusterId: "education-eks-itfXANoS"
-  imageRegistry: public.ecr.aws
   federatedStorage:
     existingSecret: kubecost-federated-store
   platforms:
@@ -15,27 +14,3 @@ prometheus:
     global:
       external_labels:
         cluster_id: "education-eks-itfXANoS"
-
-frontend:
-  image:
-    repository: kubecost/frontend
-
-aggregator:
-  image:
-    repository: kubecost/cost-model
-
-forecasting:
-  image:
-    repository: kubecost/modeling
-
-networkCosts:
-  image:
-    repository: kubecost/network-costs
-
-clusterController:
-  image:
-    repository: kubecost/cluster-controller
-
-finopsagent:
-  image:
-    repository: kubecost/agent
