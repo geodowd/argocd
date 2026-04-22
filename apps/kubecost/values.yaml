@@ -2,6 +2,15 @@ global:
   clusterId: "education-eks-itfXANoS"
   imageRegistry: public.ecr.aws
 
+kubecostProductConfigs:
+  clusterName: "education-eks-itfXANoS"
+
+prometheus:
+  server:
+    global:
+      external_labels:
+        cluster_id: "education-eks-itfXANoS"
+
 frontend:
   image:
     repository: kubecost/frontend
