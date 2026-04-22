@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubecost
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kubecost
+  sources:
+    - repoURL: https://kubecost.github.io/cost-analyzer/
+      chart: cost-analyzer
+      targetRevision: 2.9.6
+      helm:
+        valueFiles:
+          - $values/apps/kubecost/values.yaml
+    - repoURL: https://github.com/geodowd/argocd.git
+      targetRevision: main
+      ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
