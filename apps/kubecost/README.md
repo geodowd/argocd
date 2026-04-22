@@ -15,5 +15,6 @@ Apply both manifests:
 
 ```bash
 kubectl apply -f apps/kubecost/namespace.yaml
+kubectl apply -f apps/kubecost/federated-store-secret.yaml
 kubectl apply -f apps/kubecost/application.yaml
 ```

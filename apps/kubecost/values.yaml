@@ -1,6 +1,11 @@
 global:
   clusterId: "education-eks-itfXANoS"
   imageRegistry: public.ecr.aws
+  federatedStorage:
+    existingSecret: kubecost-federated-store
+  platforms:
+    cicd:
+      enabled: true
 
 kubecostProductConfigs:
   clusterName: "education-eks-itfXANoS"
